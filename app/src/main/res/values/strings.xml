@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txtView">GYM LOG</string>
     <string name="txtView3Value">Calculate your BMI</string>
-    <string name="edtWeightHintValue">Enter your weight</string>
+    <string name="edtWeightHintValue">Enter your weight (Kg)</string>
     <string name="btnCalBMIValue">Result</string>
+    <string name="edtHeightHintValue">Enter your height (m)</string>
 </resources>

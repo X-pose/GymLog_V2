@@ -1,6 +1,7 @@
 package com.falcon.gymlog_yaka
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import java.io.Console
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,21 +32,29 @@ class BMIFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-        val btnResult = view?.findViewById<Button>(R.id.btnCalBMI)
-        lateinit var edtHeight:EditText
-        lateinit var edtWeight:EditText
-        lateinit var setResult:TextView
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val btnResult = view.findViewById<Button>(R.id.btnCalBMI)
 
-        return inflater.inflate(R.layout.fragment_b_m_i, container, false)
+        var edtHeight: Float
+        var edtWeight: Float
+        var setResult: Float
+
+        var calBMI = BMILogic()
+
+        btnResult?.setOnClickListener() {
+            edtHeight = view.findViewById<EditText>(R.id.edtHeight)?.text.toString().toFloat()
+            edtWeight = view.findViewById<EditText>(R.id.edtWeight)?.text.toString().toFloat()
+
+            setResult = calBMI.calBMI(edtWeight, edtHeight)
+
+            var resultVal = view.findViewById<TextView>(R.id.ansBMI)
+            Log.e("Result is : ", "${setResult}")
+            resultVal?.text = ("Your BMI : " + setResult.toString())
+        }
     }
 
     companion object {
