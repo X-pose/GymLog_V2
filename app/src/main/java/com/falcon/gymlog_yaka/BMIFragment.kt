@@ -21,6 +21,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [BMIFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+//New ideas - show whether your BMI is ok or not.
 class BMIFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -34,28 +36,39 @@ class BMIFragment : Fragment() {
         }
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_b_m_i, container, false)
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val btnResult = view.findViewById<Button>(R.id.btnCalBMI)
 
         var edtHeight: Float
         var edtWeight: Float
         var setResult: Float
 
-        var calBMI = BMILogic()
+        val calBMI = BMILogic()
 
+        val btnResult = view?.findViewById<Button>(R.id.btnCalBMI)
         btnResult?.setOnClickListener() {
-            edtHeight = view.findViewById<EditText>(R.id.edtHeight)?.text.toString().toFloat()
-            edtWeight = view.findViewById<EditText>(R.id.edtWeight)?.text.toString().toFloat()
+            edtHeight = view?.findViewById<EditText>(R.id.edtHeight)?.text.toString().toFloat()
+            edtWeight = view?.findViewById<EditText>(R.id.edtWeight)?.text.toString().toFloat()
 
             setResult = calBMI.calBMI(edtWeight, edtHeight)
 
-            var resultVal = view.findViewById<TextView>(R.id.ansBMI)
+            var resultVal = view?.findViewById<TextView>(R.id.ansBMI)
             Log.e("Result is : ", "${setResult}")
             resultVal?.text = ("Your BMI : " + setResult.toString())
         }
     }
+
+
+
 
     companion object {
         /**
