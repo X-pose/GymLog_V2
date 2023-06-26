@@ -3,6 +3,7 @@ package com.falcon.gymlog_yaka
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils.replace
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -69,6 +71,7 @@ class ScheduleViewFragment : Fragment() {
                 val adapter = recyclerSchduleViewAdapter(data)
                 recyclerView.adapter = adapter
                 recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                Log.e("Tag bravo : ", "recyclerView ok ${data}")
             }
         }
 

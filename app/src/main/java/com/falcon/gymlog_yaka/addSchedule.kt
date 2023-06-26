@@ -2,6 +2,7 @@ package com.falcon.gymlog_yaka
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +41,6 @@ class AddScheduleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.add_schedule, container, false)
     }
 
@@ -52,18 +52,21 @@ class AddScheduleFragment : Fragment() {
         btnSave.setOnClickListener{
             var scheduleName: EditText = view.findViewById(R.id.edtScheduleName)
 
-            val name:String = scheduleName.text.toString()
+            val name:String? = scheduleName.text.toString()
             saveScheduleDBOp(requireContext(),name)
+
+
 
         }
 
     }
 
-    fun saveScheduleDBOp(context: Context, name: String) = CoroutineScope(Dispatchers.IO).launch {
+    fun saveScheduleDBOp(context: Context, name: String?) = CoroutineScope(Dispatchers.IO).launch {
         withContext(Dispatchers.IO) {
             val db = DBhelper.getDatabase(context)
             val scheduleDao = db.scheduleDao()
             scheduleDao.saveNewSchedule(name)
+            Log.e("Tag alpha : ", "savenewSchedule ok ${name}")
         }
     }
 
@@ -79,7 +82,7 @@ class AddScheduleFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            AccountViewFragment().apply {
+            AddScheduleFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
