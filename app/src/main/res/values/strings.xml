@@ -8,4 +8,7 @@
     <string name="btnCalBMIValue">Result</string>
     <string name="edtHeightHintValue">Enter your height (m)</string>
     <string name="AddNew">Add New Schedule</string>
+    <string name="addScheduleTxt">Add Schedule</string>
+    <string name="edtScheduleNameHint">Enter schedule name</string>
+    <string name="btnAddScheduleTxt">Save</string>
 </resources>
