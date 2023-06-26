@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import java.io.Console
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,8 +50,10 @@ class BMIFragment : Fragment() {
         var edtHeight: Float
         var edtWeight: Float
         var setResult: Float
+        var bmiDescription: String
 
         val calBMI = BMILogic()
+
 
         val btnResult = view?.findViewById<Button>(R.id.btnCalBMI)
         btnResult?.setOnClickListener() {
@@ -60,10 +61,14 @@ class BMIFragment : Fragment() {
             edtWeight = view?.findViewById<EditText>(R.id.edtWeight)?.text.toString().toFloat()
 
             setResult = calBMI.calBMI(edtWeight, edtHeight)
+            bmiDescription = calBMI.BMIDescription()
 
-            var resultVal = view?.findViewById<TextView>(R.id.ansBMI)
+            var resultVal = view?.findViewById<TextView>(R.id.BMIdescription)
+
             Log.e("Result is : ", "${setResult}")
-            resultVal?.text = ("Your BMI : " + setResult.toString())
+            val trimmedResult = String.format("%.1f", setResult)
+            resultVal?.text = ("Your BMI : " + trimmedResult + "\n\n"+ bmiDescription +"\n\n" )
+
         }
     }
 
