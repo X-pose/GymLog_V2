@@ -7,4 +7,5 @@
     <string name="edtWeightHintValue">Enter your weight (Kg)</string>
     <string name="btnCalBMIValue">Result</string>
     <string name="edtHeightHintValue">Enter your height (m)</string>
+    <string name="AddNew">Add New Schedule</string>
 </resources>
