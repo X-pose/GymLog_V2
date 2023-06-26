@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class recyclerSchduleViewAdapter(private val dataList: List<String>) : RecyclerView.Adapter<recyclerSchduleViewAdapter.MyViewHolder>() {
+class recyclerSchduleViewAdapter(private val dataList: List<String?>) : RecyclerView.Adapter<recyclerSchduleViewAdapter.MyViewHolder>() {
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Define references to the views in the item layout
         val textView: TextView = itemView.findViewById(R.id.ScheduleNameTxt)
